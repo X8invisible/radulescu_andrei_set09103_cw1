@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+{% if name %}
+  <h1>Hello there, {{ name }}!</h1>
+{% else %}
+  <h1>List of all {{list[0]}} with reviews.</h1>
+  {% for obj in list %}
+  <li>{{obj}}</li>
+  {% endfor %}
+{% endif %}
+
+</html>
