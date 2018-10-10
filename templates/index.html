@@ -1,6 +1,9 @@
-<!DOCTYPE html>
-<h1>Home</h1>
-{% for obj in list %}
-<li>{{obj['country']}}</li>
-{% endfor %}
-</html>
+{% extends "headerFootertemplate.html" %}
+
+
+  {% block content %}
+      <h1>Home</h1>
+      {% for obj in list %}
+      <li>{{obj['country']}}</li>
+      {% endfor %}
+  {% endblock %}
