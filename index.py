@@ -1,25 +1,25 @@
-from flask import Flask, redirect , url_for, render_template
+from flask import Flask, redirect , url_for, render_template, abort
 import json
 app = Flask(__name__)
-with open('static/wine.json', 'r') as f:
-    reviews = json.load(f)
+with open('static/clouds.json', 'r') as f:
+    clouds = json.load(f)
 
 @app.route("/private")
 def private():
     return redirect(url_for('login'))
-@app.route('/country/')
-@app.route('/country/<name>')
-def country(name=None):
-    countries = ['countries']
-    for obj in reviews:
+@app.route('/cloud/')
+@app.route('/cloud/<name>')
+def cloud(name=None):
+    names = []
+    for obj in clouds:
         if(name != None):
-            if(obj['country'] == name):
-                countries.append(obj)
+            if(obj['name'] == name):
+                names.append(obj)
+            if (len(names) == 0):
+                abort(404)
         else:
-            for x in reviews:
-                if x['country'] not in countries:
-                    countries.append(x)
-    return render_template('category.html',name =name, list = countries)
+            names = clouds
+    return render_template('category.html',name =name, list = names)
 @app.route('/login')
 def login():
     return "None shall pass"

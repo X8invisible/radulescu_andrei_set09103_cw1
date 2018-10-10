@@ -1,0 +1,92 @@
+[
+  {
+  "name": "Cirrus",
+  "form":"Thin fibres or threads, rarely also bundles; edges usually frayed by the high winds.",
+  "description": "Consist of ice crystals.",
+  "interpretation": "Fair weather clouds; when compressed it can be a sign of a warm front (precipitation).",
+  "altitude-min": 8,
+  "altitude-max": 12,
+  "precipitation": "none"
+  },
+  {
+  "name": "Cirrocumulus",
+  "form":"Heap clouds; occur mostly in more or less expanded fields, which consist of small granular cloud parts, rarely also in small ripped to pieced bundles.",
+  "description": "Consist almost exclusively of ice crystals; strongly undercooled water drops will mostly freeze inside the cloud.",
+  "interpretation": "Indicate strong vertical movement in the altitude in which they form.",
+  "altitude-min": 8,
+  "altitude-max": 12,
+  "precipitation": "none"
+    },
+    {
+      "name": "Cirrostratus",
+      "form":"Layer clouds. Occur either as a fibrous veil in which thin stripe can form, or as a veil-like fog; they can never completely cover the Sun. Under certain conditions, these clouds produce a 'halo' around the Sun, caused by the refraction of the sunlight.",
+      "description": "Consist primarily of small ice particles.",
+      "interpretation": "Indicate the arrival of a warm front (with precipitation) within 1 to 2 days.",
+      "altitude-min": 8,
+      "altitude-max": 12,
+      "precipitation": "none"
+    },
+    {
+      "name": "Altocumulus",
+      "form":"Heap clouds; appear mostly as a big field which consists of many small single clouds.",
+      "description": "Consist almost exclusively of water droplets; only at low temperatures ice-crystals can appear.",
+      "interpretation": "Indicate horizontal aerial current and, in addition, vertical currents at some places in the middle cloud layer.",
+      "altitude-min": 2,
+      "altitude-max": 8,
+      "precipitation": "none"
+    },
+    {
+      "name": "Altostratus",
+      "form":"Thread medium high layer clouds without contours.",
+      "description": "Composed of ice-crystals as well as water droplets.",
+      "interpretation": "Indicator for precipitation within the next few hours.",
+      "altitude-min": 2,
+      "altitude-max": 8,
+      "precipitation": "rain or snow"
+    },
+    {
+      "name": "Stratocumulus",
+      "form":"Shallow-layer clouds without fibres; appears in spots, fields or layers which aggregate into steadily arranged clouds, bales or rolls.",
+      "description": "Consist primarily of water droplets; these are the most frequent clouds; often have grey colouring, because the water droplets absorb a lot of light.",
+      "interpretation": "Generally annunciates an instability of the atmosphere. Takes place just before an occlusion between a cold front and a warm front.",
+      "altitude-min": 0.6,
+      "altitude-max": 2,
+      "precipitation": "rain or snow"
+    },
+    {
+      "name": "Stratus",
+      "form":"Low-layer clouds, also described as high fog or above-ground fog; absolutely without structure.",
+      "description": "Consist of small water droplets; they can generate halos; often originate with high pressure and low air movement.",
+      "interpretation": "Generally indicates a rather quiet weather condition.",
+      "altitude-min": 0,
+      "altitude-max": 2,
+      "precipitation": "light rain"
+    },
+    {
+      "name": "Cumulus",
+      "form":"Cumulus are thick heap clouds sharply separated from each other; the edges sometimes look tattered and change constantly.",
+      "description": "Consist almost exclusively of water droplets; ice-crystals can only appear at low temperatures; originate with locally restricted upward wind; for gliders and pilots, cumulus are an indicator for upward winds.",
+      "interpretation": "Nice weather clouds. If the clouds reach the medium levels of the atmosphere and is turning into a cumulonimbus cloud, light showers may arrive.",
+      "altitude-min": 0.6,
+      "altitude-max": 2,
+      "precipitation": "seldom"
+    },
+    {
+      "name": "Nimbostratus",
+      "form":"Very vast, dark grey layer; strong vertical expansion",
+      "description": "Consist of water droplets and/or ice-crystals; originate from the upward movement of moist air moving within a warm front.",
+      "interpretation": "Long-term rain/snow for several hours or days.",
+      "altitude-min": 0.6,
+      "altitude-max": 12,
+      "precipitation": "rain or snow"
+    },
+    {
+      "name": "Cumulonimbus",
+      "form":"Very big heap clouds with a massive vertical expansion originating from a cumulus cloud.",
+      "description": "Consist of water droplets and ice-crystals which however primarily appear in the upper parts. Originate from a big cumulus cloud which, if it contains enough humidity and elevation impulses, expands in altitude. Later, the upper part of the cloud still expands, and give the so-called 'anvil' cloud.",
+      "interpretation": "Cumulonimbus precipitation falls in the form of rain, hail or snow, thunderstorms are often also present; a full-grown cloud can take up up to 100 million tons of water, hence, violent showers and hail can fall. Moreover, violent hoists which can reach a speed from up to 120 km/h are to be calculated on with cumulonimbus. Within the cloud, there is also strong turbulences, so that they can themselves become dangerous for big airplanes and should therefore be flown around.",
+      "altitude-min": 0.6,
+      "altitude-max": 12,
+      "precipitation": "rain and sometimes thunderstorms"
+    }
+]

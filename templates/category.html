@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 {% if name %}
-  <h1>Hello there, {{ name }}!</h1>
+  <h1>Hello there, {{ list[0]['name']}}!</h1>
 {% else %}
-  <h1>List of all {{list[0]}} with reviews.</h1>
+  <h1>List of all clouds</h1>
   {% for obj in list %}
-  <li>{{obj}}</li>
+  <li>{{obj['name']}}</li>
   {% endfor %}
 {% endif %}
 
