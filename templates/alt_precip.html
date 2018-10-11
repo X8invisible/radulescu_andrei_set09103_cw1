@@ -1,0 +1,10 @@
+{% extends "headerFootertemplate.html" %}
+
+{% block content %}
+
+      <h1>List of clouds by their {{ type }}</h1>
+
+      {% for obj in list %}
+      <li>{{obj['name']}}</li>
+      {% endfor %}
+{% endblock %}

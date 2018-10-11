@@ -4,9 +4,28 @@ app = Flask(__name__)
 with open('static/clouds.json', 'r') as f:
     clouds = json.load(f)
 
-@app.route("/private")
-def private():
-    return redirect(url_for('login'))
+
+@app.route('/category/')
+@app.route('/category/<name>')
+@app.route('/category/<name>/<type>')
+def category(name=None, type=None):
+    if (name == None):
+        return render_template('category.html', alti = "hide", prec = "hide")
+    else:
+        if(name == 'altitude'):
+            if(type == None):
+                return render_template('category.html', alti = "show", prec = "hide")
+            else:
+                return render_template('alt_precip.html', type = name, list = clouds)
+        else:
+            if(name == 'precipitation'):
+                if(type == None):
+                    return render_template('category.html', alti = "hide", prec = "show")
+                else:
+                    return render_template('alt_precip.html', type = name, list = clouds)
+            else:
+                abort(404)
+
 @app.route('/cloud/')
 @app.route('/cloud/<name>')
 def cloud(name=None):
@@ -19,19 +38,11 @@ def cloud(name=None):
                 abort(404)
         else:
             names = clouds
-    return render_template('category.html',name =name, list = names)
-@app.route('/login')
-def login():
-    return "None shall pass"
+    return render_template('clouds.html',name =name, list = names)
 @app.route('/')
 def root():
     return render_template('index.html')
-@app.route ('/static/img')
-def static_example_img():
-    start= '<img src ="'
-    url= url_for ('static', filename ='vmask.jpg')
-    end= '>'
-    return start+url+end, 200
+
 @app.errorhandler(404)
 def page_not_found(error):
     return "Couldn't find requested page", 404

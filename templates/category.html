@@ -2,25 +2,79 @@
 
 {% block content %}
 
+<div class="card text-center mx-auto" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Search clouds by category:</h5>
+    <p class="card-text">
+      <ul class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#altitudeModal">Altitude</a>
+        <a href="#" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#precipModal">Precipitation</a>
+    </ul>
+    </p>
+    <a href="/cloud/" class="btn btn-primary">See complete list of clouds</a>
+  </div>
+</div>
 
+<!--Altitude Modal -->
+<div class="modal fade" id="altitudeModal" tabindex="-1" role="dialog" aria-labelledby="altitudeModalLabel" aria-hidden= "true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Clouds by altitude</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group list-group-flush">
+          <a href="#" class="list-group-item list-group-item-action">Low Altitude</a>
+          <a href="#" class="list-group-item list-group-item-action">Medium Altitude</a>
+          <a href="#" class="list-group-item list-group-item-action">High Altitude</a>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!--Precipitation Modal -->
+<div class="modal fade" id="precipModal" tabindex="-1" role="dialog" aria-labelledby="precipModalLabel" aria-hidden= "true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Clouds by precipiation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group list-group-flush">
+          <a href="#" class="list-group-item list-group-item-action">No Precipitation</a>
+          <a href="#" class="list-group-item list-group-item-action">Rain or Snow</a>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-
-
-
-
-
-
-
-
-
-  {% if name %}
-      <h1>Hello there, {{ list[0]['name']}}!</h1>
-    {% else %}
-      <h1>List of all clouds</h1>
-      {% for obj in list %}
-      <li>{{obj['name']}}</li>
-      {% endfor %}
-    {% endif %}
-  {% endblock %}
+<script src="https://code.jquery.com/jquery-3.1.1.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
+</script>
+<script>
+  $(document).ready(function() {
+    $("#myModal").modal();
+  });
+  $(window).on('load',function(){
+        $('#altitudeModal').modal('{{alti}}');
+    });
+  $(window).on('load',function(){
+        $('#precipModal').modal('{{prec}}');
+    });
+</script>
+{% endblock %}
