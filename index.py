@@ -10,11 +10,11 @@ with open('static/clouds.json', 'r') as f:
 @app.route('/category/<name>/<type>')
 def category(name=None, type=None):
     if (name == None):
-        return render_template('category.html', alti = "hide", prec = "hide")
+        return render_template('category.html',title = "Clouds - Categories", alti = "hide", prec = "hide")
     else:
         if(name == 'altitude'):
             if(type == None):
-                return render_template('category.html', alti = "show", prec = "hide")
+                return render_template('category.html',title = "Clouds - Categories", alti = "show", prec = "hide")
             else:
                 filteredList = []
                 typeLower = type.lower()
@@ -32,30 +32,30 @@ def category(name=None, type=None):
                                 if (typeLower == 'low'):
                                     if(obj['altitude-min']< 8 ):
                                         filteredList.append(obj)
-                    return render_template('alt_precip.html', filter = name, type = type , list = filteredList)
+                    return render_template('clouds.html',title = "Clouds", filter = name, type = type , list = filteredList)
                 else:
                     abort(404)
         else:
             if(name == 'precipitation'):
                 if(type == None):
-                    return render_template('category.html', alti = "hide", prec = "show")
+                    return render_template('category.html',title = "Clouds - Categories", alti = "hide", prec = "show")
                 else:
                     filteredList = []
                     typeLower = type.lower()
-                    if(typeLower in ("none", "rain", "snow")):
+                    if(typeLower in ("none", "rain", "seldom", "snow")):
                         for obj in clouds:
                             if(typeLower == 'none'):
                                 if(obj['precipitation'].find('none') != -1):
                                     filteredList.append(obj)
                             else:
                                 if (typeLower == 'rain'):
-                                    if(obj['precipitation'].find('rain') != -1):
+                                    if(obj['precipitation'].find('rain') != -1 or obj['precipitation'].find('seldom') != -1):
                                         filteredList.append(obj)
                                 else:
                                     if (typeLower == 'snow'):
                                         if(obj['precipitation'].find('snow') != -1):
                                             filteredList.append(obj)
-                        return render_template('alt_precip.html', filter = name, type = type , list = filteredList)
+                        return render_template('clouds.html',title = "Clouds", filter = name, type = type , list = filteredList)
                     else:
                         abort(404)
             else:
@@ -73,10 +73,10 @@ def cloud(name=None):
                 abort(404)
         else:
             names = clouds
-    return render_template('clouds.html',name =name, list = names)
+    return render_template('clouds.html',title = "Clouds",name =name, list = names)
 @app.route('/')
 def root():
-    return render_template('index.html')
+    return render_template('index.html',title = "Home")
 
 @app.errorhandler(404)
 def page_not_found(error):

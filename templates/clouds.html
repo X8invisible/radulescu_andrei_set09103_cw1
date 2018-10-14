@@ -5,9 +5,32 @@
   {% if name %}
       <h1>Hello there, {{ list[0]['name']}}!</h1>
     {% else %}
-      <h1>List of all clouds</h1>
+      {% if type %}
+        <h1 class="text-white">List of clouds by their {{ filter }} : {{type}}</h1>
+      {% else %}
+        <h1 class="text-white">List of all clouds</h1>
+      {% endif %}
       {% for obj in list %}
-      <li>{{obj['name']}}</li>
+        {% if loop.cycle(true, false, false)%}
+        <div class="row justify-content-md-center">
+        {% endif %}
+        <div class="card col-md" style="margin: 8px">
+          <div class="card-body">
+            <h5 class="card-title">{{obj['name']}}</h5>
+            <p class="card-text">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>Form: </b>{{obj['form']}}</li>
+                <li class="list-group-item"><b>Descritpion: </b>{{obj['description']}}</li>
+                <li class="list-group-item"><b>Interpretation: </b>{{obj['interpretation']}}</li>
+                <li class="list-group-item"><b>Altitude: </b>{{obj['altitude-min']}} - {{obj['altitude-max']}} km</li>
+                <li class="list-group-item"><b>Precipitation: </b>{{obj['precipitation']}}</li>
+            </ul>
+            </p>
+          </div>
+        </div>
+        {% if loop.cycle(false, false, true)%}
+          </div>
+        {% endif %}
       {% endfor %}
     {% endif %}
 {% endblock %}
