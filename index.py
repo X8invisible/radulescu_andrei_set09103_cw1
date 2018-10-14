@@ -16,13 +16,48 @@ def category(name=None, type=None):
             if(type == None):
                 return render_template('category.html', alti = "show", prec = "hide")
             else:
-                return render_template('alt_precip.html', type = name, list = clouds)
+                filteredList = []
+                typeLower = type.lower()
+                print typeLower
+                if(typeLower in ("high", "medium", "low")):
+                    for obj in clouds:
+                        if(typeLower == 'high'):
+                            if(obj['altitude-max'] > 8):
+                                filteredList.append(obj)
+                        else:
+                            if (typeLower == 'medium'):
+                                if(obj['altitude-max'] == 8):
+                                    filteredList.append(obj)
+                            else:
+                                if (typeLower == 'low'):
+                                    if(obj['altitude-min']< 8 ):
+                                        filteredList.append(obj)
+                    return render_template('alt_precip.html', filter = name, type = type , list = filteredList)
+                else:
+                    abort(404)
         else:
             if(name == 'precipitation'):
                 if(type == None):
                     return render_template('category.html', alti = "hide", prec = "show")
                 else:
-                    return render_template('alt_precip.html', type = name, list = clouds)
+                    filteredList = []
+                    typeLower = type.lower()
+                    if(typeLower in ("none", "rain", "snow")):
+                        for obj in clouds:
+                            if(typeLower == 'none'):
+                                if(obj['precipitation'].find('none') != -1):
+                                    filteredList.append(obj)
+                            else:
+                                if (typeLower == 'rain'):
+                                    if(obj['precipitation'].find('rain') != -1):
+                                        filteredList.append(obj)
+                                else:
+                                    if (typeLower == 'snow'):
+                                        if(obj['precipitation'].find('snow') != -1):
+                                            filteredList.append(obj)
+                        return render_template('alt_precip.html', filter = name, type = type , list = filteredList)
+                    else:
+                        abort(404)
             else:
                 abort(404)
 
