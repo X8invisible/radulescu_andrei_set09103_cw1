@@ -1,7 +1,24 @@
 body{
-  background-size:cover;
+  background-repeat: no-repeat;
 }
 
-.navbar{
-  margin-bottom:3%;
+.breathe{
+
+margin-top: 2%;
+}
+
+a:link, a:visited{
+	text-decoration: none;
+	color: inherit;
+}
+a:hover{
+  color: #2660A4;
+}
+
+.banner{
+   background: #2488f2;
+}
+.bigIcon{
+  height: 32px !important;
+  width: 32px;
 }
