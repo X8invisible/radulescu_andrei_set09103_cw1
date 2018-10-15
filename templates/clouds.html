@@ -3,12 +3,27 @@
 {% block content %}
 
   {% if name %}
-      <h1>Hello there, {{ list[0]['name']}}!</h1>
+    <div class="row">
+      <div class="card col-md">
+        <div class="card-body">
+          <h5 class="card-title text-center"> {{ list[0]['name']}}</h5>
+          <p class="card-text">
+            <ul class="list-group list-group-flush text-left">
+              <li class="list-group-item"><b>Form: </b> {{ list[0]['form']}}</li>
+              <li class="list-group-item"><b>Description: </b> {{ list[0]['description']}}</li>
+              <li class="list-group-item"><b>Interpretation: </b> {{ list[0]['description']}}</li>
+              <li class="list-group-item"><b>Altitude: </b> {{ list[0]['altitude-min']}} - {{list[0]['altitude-max']}} km</li>
+              <li class="list-group-item"><b>Precipitation: </b>{{list[0]['precipitation']}}</li>
+          </ul>
+          </p>
+        </div>
+      </div>
+    </div>
     {% else %}
       {% if type %}
-        <h1 class="text-white">List of clouds by their {{ filter }} : {{type}}</h1>
+        <h1 class="text-white text-center">List of clouds by their {{ filter }} : {{type}}</h1>
       {% else %}
-        <h1 class="text-white">List of all clouds</h1>
+        <h1 class="text-white text-center">List of all clouds</h1>
       {% endif %}
       {% for obj in list %}
         {% if loop.cycle(true, false, false)%}
@@ -18,9 +33,9 @@
           <div class="card-body">
             <h5 class="card-title">{{obj['name']}}</h5>
             <p class="card-text">
-              <ul class="list-group list-group-flush">
+              <ul class="list-group list-group-flush text-left">
                 <li class="list-group-item"><b>Form: </b>{{obj['form']}}</li>
-                <li class="list-group-item"><b>Descritpion: </b>{{obj['description']}}</li>
+                <li class="list-group-item"><b>Description: </b>{{obj['description']}}</li>
                 <li class="list-group-item"><b>Interpretation: </b>{{obj['interpretation']}}</li>
                 <li class="list-group-item"><b>Altitude: </b>{{obj['altitude-min']}} - {{obj['altitude-max']}} km</li>
                 <li class="list-group-item"><b>Precipitation: </b>{{obj['precipitation']}}</li>

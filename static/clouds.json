@@ -88,5 +88,14 @@
       "altitude-min": 0.6,
       "altitude-max": 12,
       "precipitation": "rain and sometimes thunderstorms"
+    },
+    {
+      "name": "Noctilucent",
+      "form":"They can appear as featureless bands, but frequently show distinctive patterns such as streaks, wave-like undulations, and whirls.",
+      "description": "Noctilucent clouds, are tenuous cloud-like phenomena in the upper atmosphere of Earth. They consist of ice crystals and are only visible during astronomical twilight. They are most often observed during the summer months from latitudes between 50° and 70° north and south of the Equator. They are visible only during local summer months and when the Sun is below the observer's horizon, but while the clouds are still in sunlight.",
+      "interpretation": "Recent studies suggests that increased atmospheric methane emissions produce additional water vapor once the methane molecules reach the mesosphere - creating, or reinforcing existing noctilucent clouds.",
+      "altitude-min": 76,
+      "altitude-max": 85,
+      "precipitation": "none"
     }
 ]

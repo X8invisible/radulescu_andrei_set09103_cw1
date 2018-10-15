@@ -1,4 +1,4 @@
-from flask import Flask, redirect , url_for, render_template, abort
+from flask import Flask, redirect , url_for, render_template, abort, request
 import json
 app = Flask(__name__)
 with open('static/clouds.json', 'r') as f:
@@ -18,7 +18,6 @@ def category(name=None, type=None):
             else:
                 filteredList = []
                 typeLower = type.lower()
-                print typeLower
                 if(typeLower in ("high", "medium", "low")):
                     for obj in clouds:
                         if(typeLower == 'high'):
@@ -65,19 +64,27 @@ def category(name=None, type=None):
 @app.route('/cloud/<name>')
 def cloud(name=None):
     names = []
-    for obj in clouds:
-        if(name != None):
-            if(obj['name'] == name):
+    if(name !=None):
+        for obj in clouds:
+            if(obj['name'].lower() == name.lower()):
                 names.append(obj)
-            if (len(names) == 0):
-                abort(404)
-        else:
-            names = clouds
+        if (len(names) == 0):
+            abort(404)
+    else:
+        names = clouds
     return render_template('clouds.html',title = "Clouds",name =name, list = names)
 @app.route('/')
 def root():
     return render_template('index.html',title = "Home")
-
+@app.route('/', methods=['POST'])
+@app.route('/cloud/', methods=['POST'])
+@app.route('/cloud/<path:wildcard>', methods=['POST'])
+@app.route('/category/<path:wildcard>', methods=['POST'])
+@app.route('/category/', methods=['POST'])
+def search_post(wildcard=None):
+    print (request.form)
+    toFind = request.form['searchCloud']
+    return redirect('/cloud/%s' %toFind)
 @app.errorhandler(404)
 def page_not_found(error):
     return "Couldn't find requested page", 404
