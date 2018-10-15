@@ -1,0 +1,54 @@
+{% extends "headerFootertemplate.html" %}
+
+
+  {% block content %}
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Submit your own cloud discovery</h5>
+    <br>
+    <form action="" method="post" name="form">
+      <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="cloudInput">Cloud name</label>
+            <input type="text" class="form-control" id="cloudInput" name="cloudInput">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="emailInput">Email address</label>
+            <input type="email" class="form-control" id="emailInput" name="emailInput" placeholder="name@example.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="formationInput">Cloud Form</label>
+          <input type="text" class="form-control" id="formationInput" name="formationInput">
+        </div>
+        <div class="form-group">
+          <label for="descriptionInput">Cloud Description</label>
+          <input type="text" class="form-control" id="descriptionInput" name="descriptionInput">
+        </div>
+        <div class="form-group">
+          <label for="interpretationInput">Cloud Interpretation</label>
+          <input type="text" class="form-control" id="interpretationInput" name="interpretationInput">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2">
+              <label for="cloudInput">Min Altitude</label>
+              <input type="number" class="form-control" id="minInput" name="minInput">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="emailInput">Max Altitude</label>
+              <input type="number" class="form-control" id="maxInput" name="maxInput">
+            </div>
+            <div class="form-group col-md-8">
+              <label for="precInput">Precipitation type</label>
+              <input type="text" class="form-control" id="precInput" name="precInput">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="emailInput">Image Link</label>
+            <input type="url" class="form-control" id="imgInput" name="imgInput">
+          </div>
+          <button type="submit" class="btn btn-sky" id="upload" name ="upload" value ="upload">Submit</button>
+      </form>
+    </div>
+  </div>
+  {% endblock %}

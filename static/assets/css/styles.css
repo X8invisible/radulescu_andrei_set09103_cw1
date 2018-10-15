@@ -1,24 +1,91 @@
 body{
+  background-color: #fafafa;
   background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom:50px;
 }
-
+.page-footer {
+    position: fixed;
+    height: 50px;
+    background-color: red;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+}
 .breathe{
-
-margin-top: 2%;
+  margin-top: 2%;
 }
-
+.bg-sky{
+  background-color: #00487C;
+}
 a:link, a:visited{
 	text-decoration: none;
 	color: inherit;
 }
-a:hover{
-  color: #2660A4;
+.card-title a:hover, .textH a:hover{
+  color: #276CAB;
 }
 
 .banner{
-   background: #2488f2;
+  background: rgba(0,110,144, 0.4);
 }
-.bigIcon{
-  height: 32px !important;
-  width: 32px;
+
+.textTitle {
+	font-family: 'Montserrat', sans-serif;
+}
+.textFont {
+	font-family: 'Roboto', sans-serif;
+}
+
+
+
+
+
+
+
+.btn-sky {
+  color: #ffffff;
+  background-color: #3E92CC;
+  border-color: #FFFFFF;
+}
+
+.btn-sky:hover,
+.btn-sky:focus,
+.btn-sky:active,
+.btn-sky.active,
+.open .dropdown-toggle.btn-sky {
+  color: #ffffff;
+  background-color: #00487C;
+  border-color: #FFFFFF;
+}
+
+.btn-sky:active,
+.btn-sky.active,
+.open .dropdown-toggle.btn-sky {
+  background-image: none;
+}
+
+.btn-sky.disabled,
+.btn-sky[disabled],
+fieldset[disabled] .btn-sky,
+.btn-sky.disabled:hover,
+.btn-sky[disabled]:hover,
+fieldset[disabled] .btn-sky:hover,
+.btn-sky.disabled:focus,
+.btn-sky[disabled]:focus,
+fieldset[disabled] .btn-sky:focus,
+.btn-sky.disabled:active,
+.btn-sky[disabled]:active,
+fieldset[disabled] .btn-sky:active,
+.btn-sky.disabled.active,
+.btn-sky[disabled].active,
+fieldset[disabled] .btn-sky.active {
+  background-color: #3E92CC;
+  border-color: #FFFFFF;
+}
+
+.btn-sky .badge {
+  color: #3E92CC;
+  background-color: #ffffff;
 }

@@ -4,7 +4,7 @@
 
   {% if name %}
     <div class="row">
-      <div class="card col-md">
+      <div class="card col-md" style="margin-bottom: 2em;">
         <div class="card-body">
           <h5 class="card-title text-center">{{list[0]['name']}}</h5>
           <p class="card-text">
@@ -17,6 +17,7 @@
           </ul>
           </p>
         </div>
+        <img class="card-img-bottom py-3" src="{{list[0]['image']}}">
       </div>
     </div>
     {% else %}
@@ -42,6 +43,7 @@
             </ul>
             </p>
           </div>
+          <img class="card-img-bottom py-3" src= "{{obj['image']}}" >
         </div>
         {% if loop.cycle(false, false, true)%}
           </div>

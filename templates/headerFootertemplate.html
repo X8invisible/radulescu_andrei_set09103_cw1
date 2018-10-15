@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
   <link rel="stylesheet" href="/static/assets/css/styles.css">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Clooooouds</a>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
+   <nav class="navbar navbar-expand-lg navbar-dark bg-sky">
+    <a class="navbar-brand textTitle" href="#">Clooooouds</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -16,6 +17,7 @@
       <div class="navbar-nav mr-auto">
         <a class="nav-item nav-link" href="/">Home</a>
         <a class="nav-item nav-link" href="/category/">Categories</a>
+        <a class="nav-item nav-link" href="/community">Community</a>
       </div>
       <form class="form-inline my-2 my-lg-0" action="" method="post" name="form">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name ="searchCloud" id="searchCloud">
@@ -24,19 +26,26 @@
     </div>
   </nav>
 </head>
-<body style="background-image: url('/static/assets/img/clouds1.jpg')">
+<body style="background-image: url('/static/assets/img/{{ background }}')">
 {% block uncontained%}
 
 {% endblock %}
-  <div class="container breathe">
+  <div class="container breathe textFont">
 
 {% block content %}
 
 {% endblock %}
   </div>
 </body>
-<footer>
-    
+
+<footer class="page-footer font-small bg-sky">
+  <div class="row text-center" style="margin: 5px;">
+    <div class="footer-copyright py-2 text-white col-md-7 text-md-right">Advanced Web Technologies Coursework by Andrei Radulescu</div>
+    <div class="textH footer-copyright text-md-right py-2 text-white col-md-5"><a href="#">Design Template</a> </div>
+  </div>
 </footer>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-</html>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script></html>
+{% block script%}
+
+{% endblock %}

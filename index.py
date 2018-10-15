@@ -3,18 +3,20 @@ import json
 app = Flask(__name__)
 with open('static/clouds.json', 'r') as f:
     clouds = json.load(f)
-
-
+    f.close()
+with open('static/community.json', 'r') as co:
+    communityList = json.load(co)
+    co.close()
 @app.route('/category/')
 @app.route('/category/<name>')
 @app.route('/category/<name>/<type>')
 def category(name=None, type=None):
     if (name == None):
-        return render_template('category.html',title = "Clouds - Categories", alti = "hide", prec = "hide")
+        return render_template('category.html',background="clouds3.jpg",title = "Clouds - Categories", alti = "hide", prec = "hide")
     else:
         if(name == 'altitude'):
             if(type == None):
-                return render_template('category.html',title = "Clouds - Categories", alti = "show", prec = "hide")
+                return render_template('category.html',background="clouds3.jpg",title = "Clouds - Categories", alti = "show", prec = "hide")
             else:
                 filteredList = []
                 typeLower = type.lower()
@@ -31,13 +33,13 @@ def category(name=None, type=None):
                                 if (typeLower == 'low'):
                                     if(obj['altitude-min']< 8 ):
                                         filteredList.append(obj)
-                    return render_template('clouds.html',title = "Clouds", filter = name, type = type , list = filteredList)
+                    return render_template('clouds.html',background="clouds2.jpg",title = "Clouds", filter = name, type = type , list = filteredList)
                 else:
                     abort(404)
         else:
             if(name == 'precipitation'):
                 if(type == None):
-                    return render_template('category.html',title = "Clouds - Categories", alti = "hide", prec = "show")
+                    return render_template('category.html',background="clouds3.jpg",title = "Clouds - Categories", alti = "hide", prec = "show")
                 else:
                     filteredList = []
                     typeLower = type.lower()
@@ -54,7 +56,7 @@ def category(name=None, type=None):
                                     if (typeLower == 'snow'):
                                         if(obj['precipitation'].find('snow') != -1):
                                             filteredList.append(obj)
-                        return render_template('clouds.html',title = "Clouds", filter = name, type = type , list = filteredList)
+                        return render_template('clouds.html',background="clouds2.jpg",title = "Clouds", filter = name, type = type , list = filteredList)
                     else:
                         abort(404)
             else:
@@ -72,17 +74,51 @@ def cloud(name=None):
             abort(404)
     else:
         names = clouds
-    return render_template('clouds.html',title = "Clouds",name =name, list = names)
+    return render_template('clouds.html',background="clouds2.jpg",title = "Clouds",name =name, list = names)
 @app.route('/')
 def root():
-    return render_template('index.html',title = "Home")
+    return render_template('index.html',background="clouds1.jpg",title = "Home")
+@app.route('/submission', methods=['GET','POST'])
+def submission():
+    if (request.method == 'POST'):
+        if(request.form.get('upload', None) == "upload"):
+            cloud = {
+            "name": "Cirrus",
+            "form":"hello",
+            "description": "something",
+            "interpretation": "placeholder",
+            "altitude-min": 8,
+            "altitude-max": 12,
+            "precipitation": "none",
+            "image": "https://imgur.com/dXuJ9eT.jpg"}
+            cloud['name'] = request.form['cloudInput']
+            cloud['form'] = request.form['formationInput']
+            cloud['description'] = request.form['descriptionInput']
+            cloud['interpretation'] = request.form['interpretationInput']
+            cloud['altitude-min'] = request.form['minInput']
+            cloud['altitude-max'] = request.form['maxInput']
+            cloud['precipitation'] = request.form['precInput']
+            cloud['image'] = request.form['imgInput']
+            communityList.append(cloud)
+            with open('static/community.json', 'w') as outfile:
+                json.dump(communityList, outfile)
+                outfile.close()
+            return redirect('/')
+        else:
+            toFind = request.form['searchCloud']
+            return redirect('/cloud/%s' %toFind)
+    else:
+        return render_template('submission.html',background="clouds1.jpg",title = "Cloud Upload")
+
+@app.route('/community')
+def community():
+    return render_template('clouds.html',background="clouds2.jpg",title = "Community Submissions",name = None, list = communityList)
 @app.route('/', methods=['POST'])
 @app.route('/cloud/', methods=['POST'])
 @app.route('/cloud/<path:wildcard>', methods=['POST'])
 @app.route('/category/<path:wildcard>', methods=['POST'])
 @app.route('/category/', methods=['POST'])
 def search_post(wildcard=None):
-    print (request.form)
     toFind = request.form['searchCloud']
     return redirect('/cloud/%s' %toFind)
 @app.errorhandler(404)
