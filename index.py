@@ -87,11 +87,13 @@ def submission():
             "form":"hello",
             "description": "something",
             "interpretation": "placeholder",
+            "email": "example@web.com",
             "altitude-min": 8,
             "altitude-max": 12,
             "precipitation": "none",
             "image": "https://imgur.com/dXuJ9eT.jpg"}
             cloud['name'] = request.form['cloudInput']
+            cloud['email'] = request.form['emailInput']
             cloud['form'] = request.form['formationInput']
             cloud['description'] = request.form['descriptionInput']
             cloud['interpretation'] = request.form['interpretationInput']
@@ -123,6 +125,6 @@ def search_post(wildcard=None):
     return redirect('/cloud/%s' %toFind)
 @app.errorhandler(404)
 def page_not_found(error):
-    return "Couldn't find requested page", 404
+    return render_template('error.html'), 404
 if __name__=="__main__":
     app.run(host='localhost', debug=True)

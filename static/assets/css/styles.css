@@ -6,7 +6,7 @@ body{
 }
 .page-footer {
     position: fixed;
-    height: 50px;
+    height: 5%;
     background-color: red;
     bottom: 0px;
     left: 0px;

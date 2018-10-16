@@ -6,49 +6,113 @@
   <div class="card-body">
     <h5 class="card-title">Submit your own cloud discovery</h5>
     <br>
-    <form action="" method="post" name="form">
+    <form action="" method="post" name="form" id="submitForm" class="needs-validation" novalidate>
       <div class="form-row">
           <div class="form-group col-md-6">
             <label for="cloudInput">Cloud name</label>
-            <input type="text" class="form-control" id="cloudInput" name="cloudInput">
+            <input type="text" class="form-control" id="cloudInput" name="cloudInput" required>
+            <div class="invalid-feedback">
+              Please provide a valid name.
+            </div>
           </div>
           <div class="form-group col-md-6">
             <label for="emailInput">Email address</label>
-            <input type="email" class="form-control" id="emailInput" name="emailInput" placeholder="name@example.com">
+            <input type="email" class="form-control" id="emailInput" name="emailInput" placeholder="name@example.com" required>
+            <div class="invalid-feedback">
+                Please provide a valid email.
+            </div>
           </div>
         </div>
         <div class="form-group">
           <label for="formationInput">Cloud Form</label>
-          <input type="text" class="form-control" id="formationInput" name="formationInput">
+          <input type="text" class="form-control" id="formationInput" name="formationInput" required>
+          <div class="invalid-feedback">
+              Please provide a valid response.
+          </div>
         </div>
         <div class="form-group">
           <label for="descriptionInput">Cloud Description</label>
-          <input type="text" class="form-control" id="descriptionInput" name="descriptionInput">
+          <input type="text" class="form-control" id="descriptionInput" name="descriptionInput" required>
+          <div class="invalid-feedback">
+              Please provide a valid response.
+          </div>
         </div>
         <div class="form-group">
           <label for="interpretationInput">Cloud Interpretation</label>
-          <input type="text" class="form-control" id="interpretationInput" name="interpretationInput">
+          <input type="text" class="form-control" id="interpretationInput" name="interpretationInput" required>
+          <div class="invalid-feedback">
+              Please provide a valid response.
+          </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-2">
               <label for="cloudInput">Min Altitude</label>
-              <input type="number" class="form-control" id="minInput" name="minInput">
+              <input type="number" class="form-control" id="minInput" name="minInput" oninput="checkAltitude()" required>
+              <div class="invalid-feedback">
+                  Please provide a valid number.
+              </div>
             </div>
             <div class="form-group col-md-2">
               <label for="emailInput">Max Altitude</label>
-              <input type="number" class="form-control" id="maxInput" name="maxInput">
+              <input type="number" class="form-control" id="maxInput" name="maxInput" oninput="checkAltitude()" required>
+              <div class="invalid-feedback">
+                  Please provide a valid number.
+              </div>
             </div>
             <div class="form-group col-md-8">
               <label for="precInput">Precipitation type</label>
-              <input type="text" class="form-control" id="precInput" name="precInput">
+              <input type="text" class="form-control" id="precInput" name="precInput" required>
+              <div class="invalid-feedback">
+                  Please provide a valid response.
+              </div>
             </div>
           </div>
           <div class="form-group">
             <label for="emailInput">Image Link</label>
-            <input type="url" class="form-control" id="imgInput" name="imgInput">
+            <input type="url" class="form-control" id="imgInput" name="imgInput" required>
+            <div class="invalid-feedback">
+                Please provide a valid link.
+            </div>
           </div>
           <button type="submit" class="btn btn-sky" id="upload" name ="upload" value ="upload">Submit</button>
       </form>
     </div>
   </div>
   {% endblock %}
+
+
+{% block script %}
+  <script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+
+  function checkAltitude() {
+    var x = document.querySelector("#minInput");
+    var y = document.getElementById("submitForm").elements.namedItem("maxInput").value;
+
+	if (parseInt(x.value, 10) > parseInt(y, 10)) {
+		x.setCustomValidity("Min Altitude should be lower than Max Altitude");
+	} else {
+		x.setCustomValidity("");
+	}
+}
+  </script>
+{% endblock %}
