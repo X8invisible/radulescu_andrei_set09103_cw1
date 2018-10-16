@@ -115,11 +115,15 @@ def submission():
 @app.route('/community')
 def community():
     return render_template('clouds.html',background="clouds2.jpg",title = "Community Submissions",name = None, list = communityList)
+@app.route('/design')
+def design():
+    return render_template('design.html',background="clouds1.jpg",title = "Design Template")
 @app.route('/', methods=['POST'])
 @app.route('/cloud/', methods=['POST'])
 @app.route('/cloud/<path:wildcard>', methods=['POST'])
 @app.route('/category/<path:wildcard>', methods=['POST'])
 @app.route('/category/', methods=['POST'])
+@app.route('/design', methods=['POST'])
 def search_post(wildcard=None):
     toFind = request.form['searchCloud']
     return redirect('/cloud/%s' %toFind)
